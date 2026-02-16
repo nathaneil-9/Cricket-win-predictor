@@ -2,9 +2,9 @@
 
 ## 📌 Project Overview
 This project predicts the **win probability of a cricket team during a live match** based on the current match situation.  
-It uses **machine learning** to analyze historical ball-by-ball cricket data and estimates the chances of winning in real time.
+It uses **machine learning** on historical ball-by-ball cricket data to estimate the chances of winning in real time.
 
-The system is designed mainly for **T20 matches** and provides additional match insights such as:
+The system is designed for **T20 cricket matches** and also displays useful match statistics such as:
 - Runs needed
 - Balls remaining
 - Current Run Rate (CRR)
@@ -13,29 +13,24 @@ The system is designed mainly for **T20 matches** and provides additional match 
 ---
 
 ## 🎯 Objective
-To build a machine learning model that can:
-- Predict whether the batting team will win or lose
-- Display the **probability of winning** based on match conditions
-- Help users understand match pressure and momentum
+The objective of this project is to:
+- Predict whether the batting team will **win or lose**
+- Display the **winning probability percentage**
+- Provide match context using run rates and remaining resources
 
 ---
 
 ## 📂 Dataset
-- **Type:** Ball-by-ball cricket dataset
-- **Source:** Public cricket datasets (e.g. Cricsheet / Kaggle)
-- **Key columns used:**
-  - runs_off_bat
-  - extras
-  - innings
-  - ball
-  - player_dismissed
-
-From these, match situation features were derived.
+- **Type:** Ball-by-ball cricket dataset  
+- **Source:** Public cricket datasets (Cricsheet / Kaggle)  
+- **Description:**  
+  The dataset contains detailed ball-level information such as runs scored, extras, wickets, and innings details.  
+  From this raw data, match-level features were derived.
 
 ---
 
 ## 🧠 Features Used for Prediction
-The final model uses the following features:
+The following features are used by the machine learning model:
 
 1. Current Score  
 2. Overs Completed  
@@ -43,7 +38,7 @@ The final model uses the following features:
 4. Target Score  
 5. Required Run Rate  
 
-To reduce noise and improve accuracy, predictions are made **after 5 overs**.
+To improve accuracy and reduce randomness, predictions are made **after 5 overs**.
 
 ---
 
@@ -51,25 +46,26 @@ To reduce noise and improve accuracy, predictions are made **after 5 overs**.
 - **Algorithm:** Random Forest Classifier  
 - **Number of Trees:** 300–400  
 - **Reason for selection:**
-  - Handles non-linear patterns
-  - Performs well on sports data
-  - Improves accuracy compared to linear models
+  - Captures non-linear match patterns
+  - Handles noisy sports data effectively
+  - Provides higher accuracy than linear models
 
 ---
 
 ## 📈 Model Performance
 - **Accuracy:** ~85%  
 - Accuracy was improved by:
-  - Removing early-over noise
-  - Using match pressure features like Required Run Rate
-  - Sampling meaningful match situations
+  - Removing early-over match noise
+  - Adding Required Run Rate as a feature
+  - Training on meaningful match situations only
 
 ---
 
 ## 🖥️ Application Interface
-The project includes a **Streamlit-based interactive application** where users can:
+The project includes an **interactive Streamlit application** where users can:
 - Enter live match details
-- View match statistics (CRR, RRR, balls remaining)
+- View runs needed and balls remaining
+- See Current Run Rate (CRR) and Required Run Rate (RRR)
 - Get real-time win probability prediction
 
 ---
@@ -78,4 +74,4 @@ The project includes a **Streamlit-based interactive application** where users c
 
 ### 1️⃣ Train the Model
 ```bash
-python
+python model_train.py
